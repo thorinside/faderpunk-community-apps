@@ -19,6 +19,23 @@ Browse what each community app does before building anything: **[the community m
 
 Community app IDs start at 100 (official apps use 1–99) and are permanent once assigned.
 
+## Try everything (integration branch)
+
+This branch (`fpapp-all`) bundles the open work so all 21 catalogued apps can
+be built and installed together. It combines the package build workflow
+(ATOVproject/faderpunk-community-apps#31), Sift (#30), and the pointer-free
+lookup tables for harmonica and vamp (#54). It needs firmware from the
+`feat/fpapp-compat` branch of `thorinside/faderpunk`, which is stacked on
+ATOVproject/faderpunk#666:
+
+```sh
+git clone -b feat/fpapp-compat https://github.com/thorinside/faderpunk.git
+cd faderpunk && ./build-uf2.sh   # flash target/thumbv8m.main-none-eabihf/release/faderpunk.uf2
+cd ../faderpunk-community-apps && make fpapps
+```
+
+The packages only install on a device running that exact firmware revision.
+
 ## Build installable apps
 
 Clone this repository and Faderpunk next to one another, check out the firmware
